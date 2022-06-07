@@ -1,0 +1,17 @@
+pipeline {
+    agent { label 'python' }
+    stages {
+        stage('source code from git'){
+            steps {
+                git branch: 'declarative', url: 'https://github.com/ramyapatibandla48/python-sample-vscode-flask-tutorial.git'
+            }
+        }
+
+        stage('build') {
+            steps {
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        
+    }
+}
