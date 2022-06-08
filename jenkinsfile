@@ -21,6 +21,12 @@ pipeline {
                 sh '/home/jenkins/.local/bin/pytest --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml'
             }
         }
+
+        stage('publish'){
+            steps{
+                junit testResults: '**/test-*.xml'
+            }
+        }
         
     }
 }
